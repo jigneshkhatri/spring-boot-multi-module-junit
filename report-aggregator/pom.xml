@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+	   <groupId>in.quallit</groupId>
+		<artifactId>junitwithmockito_multimodule</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+  	</parent>
+	<artifactId>report-aggregator</artifactId>
+	<name>report-aggregator</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>in.quallit</groupId>
+			<artifactId>service</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>in.quallit</groupId>
+			<artifactId>web</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+		<groupId>org.jacoco</groupId>
+		<artifactId>jacoco-maven-plugin</artifactId>
+		<version>0.8.5</version>
+		<configuration>
+			<append>true</append>
+		</configuration>
+		<executions>
+			<!-- attached to Maven test phase -->
+			<execution>
+				<id>report</id>
+				<phase>test</phase>
+				<goals>
+					<goal>report-aggregate</goal>
+				</goals>
+			</execution>
+		</executions>
+	</plugin>
+	
+		</plugins>
+	</build>
+
+</project>
